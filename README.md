@@ -1,16 +1,9 @@
 # nextmovie_v2
 
-A new Flutter project.
+My app is designed to let you find and see the best movies available. 
+The NextMovie application will showcase old and upcoming movies for the user to see. Movies will be categorized by genres and release date. 
+The user is able to select a particular movie, which will show them a trailer, a star rating system, box office earnings, and reviews from other users who have seen the movie. The comment section will allow users to interact with others on what they think about the movie. They are able to like and dislike comments if they choose to do so.
+The user is also able to select and favorite movies which will be stored on a server for when the user wants to login and see the movies they favorite.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
