@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682566354918",
+    "project_id": "nextmovie-f0953",
+    "storage_bucket": "nextmovie-f0953.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682566354918:android:dbf05be1bd98af8fd33827",
+        "android_client_info": {
+          "package_name": "com.example.nextmovie_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682566354918-57ps41vu2iobi6eigouupa8r4nukcd19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC72DQ4y0fsTWLRNAQ_SKfzQhqKHbhWRFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682566354918-57ps41vu2iobi6eigouupa8r4nukcd19.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
