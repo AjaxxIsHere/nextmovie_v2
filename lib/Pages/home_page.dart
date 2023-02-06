@@ -1,7 +1,9 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:nextmovie_v2/utilities/text_styles.dart';
 import 'package:tmdb_api/tmdb_api.dart';
+import 'package:nextmovie_v2/reusable_widgets/widgets.dart';
 
 class homescreenPage extends StatefulWidget {
   const homescreenPage({super.key});
@@ -11,6 +13,7 @@ class homescreenPage extends StatefulWidget {
 }
 
 class _homescreenPageState extends State<homescreenPage> {
+  /*-----------------------------------------------------------------------------*/
   List trendingMovies = [];
   List topRatedMovies = [];
   List tvShows = [];
@@ -43,18 +46,24 @@ class _homescreenPageState extends State<homescreenPage> {
     });
     print(TrendingResults);
   }
+  /*-----------------------------------------------------------------------------*/
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text("Next Movie")),
-        body: const Center(
-          child: Text("placeholder"), // LEFT OFF HERE
-        ),
+        appBar: AppBar(
+            title: const textModified(
+                text: "NextMovie", color: Colors.white, size: 24)),
+        body: ListView(children: [
+          TrendingMoviesContainer(
+            trending: trendingMovies,
+          )
+        ]),
       ),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(brightness: Brightness.dark, primaryColor: Colors.green),
+      theme: ThemeData(
+          brightness: Brightness.dark, primaryColor: Colors.transparent),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nextmovie_v2/utilities/text_styles.dart';
 
+// Logo for sign in page
 Image logoWidget(String imageName) {
   return Image.asset(
     imageName,
@@ -35,6 +37,7 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
   );
 }
 
+// Sign in button
 Container signInsignUpButtons(
     BuildContext context, bool isLogin, Function onTap) {
   return Container(
@@ -62,4 +65,71 @@ Container signInsignUpButtons(
       ),
     ),
   );
+}
+
+/*ElevatedButton LogoutButton() {
+  return ElevatedButton(
+      onPressed: () {
+        FirebaseAuth.instance.signOut().then((value) {
+          print("Signed Out");
+          Navigator.pushReplacement(context as BuildContext,
+              MaterialPageRoute(builder: (context) => const signinScreen()));
+        });
+      },
+      child: const Text("Logout"));
+}*/
+
+class TrendingMoviesContainer extends StatelessWidget {
+  final List trending;
+
+  const TrendingMoviesContainer({super.key, required this.trending});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const textModified(
+              text: "Trending 🔥", color: Colors.white, size: 26),
+          const SizedBox(
+            height: 15,
+          ),
+          Container(
+            height: 270,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: trending.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 140,
+                    child: Column(children: [
+                      Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://image.tmdb.org/t/p/w500' +
+                                        trending[index]['poster_path']))),
+                      ),
+                      Container(
+                        child: textModified(
+                          text: trending[index]['title'] ?? 'Loading',
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      )
+                    ]),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

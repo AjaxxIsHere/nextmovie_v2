@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+// Used for gradient backgrounds
 hexStringToColor(String HexColor) {
   HexColor = HexColor.toUpperCase().replaceAll('0', '');
   if (HexColor.length == 6) {
