@@ -11,7 +11,7 @@ Image logoWidget(String imageName) {
   );
 }
 
-// Text feild for inputting data like username or password
+// Text field for inputting data like username or password
 TextField reusableTextField(String text, IconData icon, bool isPasswordType,
     TextEditingController controller) {
   return TextField(
@@ -115,9 +115,128 @@ class TrendingMoviesContainer extends StatelessWidget {
                                     'https://image.tmdb.org/t/p/w500' +
                                         trending[index]['poster_path']))),
                       ),
+                      SizedBox(
+                        height: 4,
+                      ),
                       Container(
                         child: textModified(
                           text: trending[index]['title'] ?? 'Loading',
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      )
+                    ]),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MostPopularMoviesContainer extends StatelessWidget {
+  final List MostPopular;
+
+  const MostPopularMoviesContainer({super.key, required this.MostPopular});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const textModified(
+              text: "Most Popular 🎥", color: Colors.white, size: 26),
+          const SizedBox(
+            height: 15,
+          ),
+          Container(
+            height: 270,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: MostPopular.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 140,
+                    child: Column(children: [
+                      Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://image.tmdb.org/t/p/w500' +
+                                        MostPopular[index]['poster_path']))),
+                      ),
+                      SizedBox(
+                        height: 4,
+                      ),
+                      Container(
+                        child: textModified(
+                          text: MostPopular[index]['title'] ?? 'Loading',
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      )
+                    ]),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TvShowsContainer extends StatelessWidget {
+  final List TvShows;
+
+  const TvShowsContainer({super.key, required this.TvShows});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const textModified(
+              text: "Popular Tv Shows 📺", color: Colors.white, size: 26),
+          const SizedBox(
+            height: 15,
+          ),
+          Container(
+            height: 270,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: TvShows.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 140,
+                    child: Column(children: [
+                      Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://image.tmdb.org/t/p/w500' +
+                                        TvShows[index]['poster_path']))),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Container(
+                        child: textModified(
+                          text: TvShows[index]['title'] ?? 'Loading',
                           color: Colors.white,
                           size: 15,
                         ),
