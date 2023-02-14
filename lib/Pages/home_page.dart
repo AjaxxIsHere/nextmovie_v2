@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:nextmovie_v2/utilities/text_styles.dart';
@@ -37,8 +37,7 @@ class _homescreenPageState extends State<homescreenPage> {
     Map TrendingResults = await tmdbWithCustomLogs.v3.trending.getTrending();
     Map topRatedResults = await tmdbWithCustomLogs.v3.movies.getTopRated();
     Map tvResults = await tmdbWithCustomLogs.v3.tv.getPopular();
-    //print(TrendingResults);
-    //return TrendingResults['results'];
+
     setState(() {
       trendingMovies = TrendingResults['results'];
       topRatedMovies = topRatedResults['results'];
@@ -56,9 +55,15 @@ class _homescreenPageState extends State<homescreenPage> {
             title: const textModified(
                 text: "NextMovie", color: Colors.white, size: 24)),
         body: ListView(children: [
+          /*---------------------------*/
           TrendingMoviesContainer(
             trending: trendingMovies,
-          )
+          ),
+          /*---------------------------*/
+          MostPopularMoviesContainer(MostPopular: topRatedMovies),
+          /*---------------------------*/
+          TvShowsContainer(TvShows: tvShows),
+          /*---------------------------*/
         ]),
       ),
       debugShowCheckedModeBanner: false,

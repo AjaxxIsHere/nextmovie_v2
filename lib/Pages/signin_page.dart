@@ -63,11 +63,7 @@ class _signinScreenState extends State<signinScreen> {
                       MaterialPageRoute(
                         builder: (context) => homescreenPage(),
                       ));
-                }); /*.onError((error, stackTrace) {
-                  AlertDialog(
-                    title: Text("Email or password is incorrect"),
-                  );
-                });*/
+                });
               } on FirebaseAuthException catch (error) {
                 print(error.message);
                 Fluttertoast.showToast(
