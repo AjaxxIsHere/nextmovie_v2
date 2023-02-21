@@ -43,7 +43,7 @@ class _homescreenPageState extends State<homescreenPage> {
       topRatedMovies = topRatedResults['results'];
       tvShows = tvResults['results'];
     });
-    print(TrendingResults);
+    print(tvResults);
   }
   /*-----------------------------------------------------------------------------*/
 
@@ -56,11 +56,9 @@ class _homescreenPageState extends State<homescreenPage> {
                 text: "NextMovie", color: Colors.white, size: 24)),
         body: ListView(children: [
           /*---------------------------*/
-          TrendingMoviesContainer(
-            trending: trendingMovies,
-          ),
-          /*---------------------------*/
           MostPopularMoviesContainer(MostPopular: topRatedMovies),
+          /*---------------------------*/
+          TrendingMoviesContainer(trending: trendingMovies),
           /*---------------------------*/
           TvShowsContainer(TvShows: tvShows),
           /*---------------------------*/

@@ -9,6 +9,7 @@ import 'package:nextmovie_v2/utilities/color_utils.dart';
 import 'package:nextmovie_v2/reusable_widgets/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+// Sign In Screen Widget
 class signinScreen extends StatefulWidget {
   const signinScreen({super.key});
 

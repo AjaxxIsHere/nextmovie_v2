@@ -1,5 +1,10 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nextmovie_v2/utilities/text_styles.dart';
+import '../Pages/description_page.dart';
+import '../Pages/signin_page.dart';
 
 // Logo for sign in page
 Image logoWidget(String imageName) {
@@ -79,6 +84,7 @@ Container signInsignUpButtons(
       child: const Text("Logout"));
 }*/
 
+// List view to show trending movies with its posters
 class TrendingMoviesContainer extends StatelessWidget {
   final List trending;
 
@@ -103,30 +109,49 @@ class TrendingMoviesContainer extends StatelessWidget {
               itemCount: trending.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
-                  child: Container(
-                    width: 140,
-                    child: Column(children: [
-                      Container(
-                        height: 200,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://image.tmdb.org/t/p/w500' +
-                                        trending[index]['poster_path']))),
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Container(
-                        child: textModified(
-                          text: trending[index]['title'] ?? 'Loading',
-                          color: Colors.white,
-                          size: 15,
-                        ),
-                      )
-                    ]),
-                  ),
+                  /*------------------------------------------------------------------------------------*/
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => descriptionPage(
+                            name: trending[index]['title'],
+                            bannerUrl: 'https://image.tmdb.org/t/p/w500' +
+                                trending[index]['backdrop_path'],
+                            posterUrl: 'https://image.tmdb.org/t/p/w500' +
+                                trending[index]['poster_path'],
+                            description: trending[index]['overview'],
+                            votes: trending[index]['vote_average'].toString(),
+                            release_date: trending[index]['release_date'],
+                          ),
+                        ));
+                  },
+                  /*------------------------------------------------------------------------------------*/
+                  child: trending[index]['title'] != null
+                      ? Container(
+                          width: 140,
+                          child: Column(children: [
+                            Container(
+                              height: 200,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          'https://image.tmdb.org/t/p/w500' +
+                                              trending[index]['poster_path']))),
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            Container(
+                              child: textModified(
+                                text: trending[index]['title'] ?? 'Loading',
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                            )
+                          ]),
+                        )
+                      : Container(),
                 );
               },
             ),
@@ -137,6 +162,7 @@ class TrendingMoviesContainer extends StatelessWidget {
   }
 }
 
+// List view to show most popular movies in a different layout
 class MostPopularMoviesContainer extends StatelessWidget {
   final List MostPopular;
 
@@ -150,41 +176,70 @@ class MostPopularMoviesContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const textModified(
-              text: "Most Popular 🎥", color: Colors.white, size: 26),
+            text: "Top Rated 🎥",
+            color: Colors.white,
+            size: 26,
+          ),
           const SizedBox(
             height: 15,
           ),
           Container(
-            height: 270,
+            margin: const EdgeInsets.all(5),
+            height: 190,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: MostPopular.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
-                  child: Container(
-                    width: 140,
-                    child: Column(children: [
-                      Container(
-                        height: 200,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://image.tmdb.org/t/p/w500' +
-                                        MostPopular[index]['poster_path']))),
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Container(
-                        child: textModified(
-                          text: MostPopular[index]['title'] ?? 'Loading',
-                          color: Colors.white,
-                          size: 15,
-                        ),
-                      )
-                    ]),
-                  ),
+                  /*------------------------------------------------------------------------------------*/
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => descriptionPage(
+                            name: MostPopular[index]['title'],
+                            bannerUrl: 'https://image.tmdb.org/t/p/w500' +
+                                MostPopular[index]['backdrop_path'],
+                            posterUrl: 'https://image.tmdb.org/t/p/w500' +
+                                MostPopular[index]['poster_path'],
+                            description: MostPopular[index]['overview'],
+                            votes:
+                                MostPopular[index]['vote_average'].toString(),
+                            release_date: MostPopular[index]['release_date'],
+                          ),
+                        ));
+                  },
+                  /*------------------------------------------------------------------------------------*/
+                  child: MostPopular[index]['title'] != null
+                      ? Container(
+                          padding: EdgeInsets.all(5),
+                          width: 250,
+                          child: Column(children: [
+                            Container(
+                              height: 140,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                        'https://image.tmdb.org/t/p/w500' +
+                                            MostPopular[index]['backdrop_path'],
+                                      ),
+                                      fit: BoxFit.cover)),
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            Container(
+                              child: textModified(
+                                text: MostPopular[index]['title'] ?? 'Loading',
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                            )
+                          ]),
+                        )
+                      : Container(),
                 );
               },
             ),
@@ -195,6 +250,7 @@ class MostPopularMoviesContainer extends StatelessWidget {
   }
 }
 
+// List view to show popular tv shows with its posters
 class TvShowsContainer extends StatelessWidget {
   final List TvShows;
 
@@ -219,7 +275,24 @@ class TvShowsContainer extends StatelessWidget {
               itemCount: TvShows.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  /*------------------------------------------------------------------------------------*/
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => descriptionPage(
+                            name: TvShows[index]['name'],
+                            bannerUrl: 'https://image.tmdb.org/t/p/w500' +
+                                TvShows[index]['backdrop_path'],
+                            posterUrl: 'https://image.tmdb.org/t/p/w500' +
+                                TvShows[index]['poster_path'],
+                            description: TvShows[index]['overview'],
+                            votes: TvShows[index]['vote_average'].toString(),
+                            release_date: TvShows[index]['first_air_date'],
+                          ),
+                        ));
+                  },
+                  /*------------------------------------------------------------------------------------*/
                   child: Container(
                     width: 140,
                     child: Column(children: [
@@ -236,7 +309,7 @@ class TvShowsContainer extends StatelessWidget {
                       ),
                       Container(
                         child: textModified(
-                          text: TvShows[index]['title'] ?? 'Loading',
+                          text: TvShows[index]['original_name'] ?? 'Loading',
                           color: Colors.white,
                           size: 15,
                         ),
