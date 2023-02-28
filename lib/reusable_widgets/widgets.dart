@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:nextmovie_v2/utilities/text_styles.dart';
 import '../Pages/description_page.dart';
 import '../Pages/signin_page.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:nextmovie_v2/Pages/profile_page.dart';
+import 'package:nextmovie_v2/utilities/navigator.dart';
 
 // Logo for sign in page
 Image logoWidget(String imageName) {
@@ -72,6 +75,7 @@ Container signInsignUpButtons(
   );
 }
 
+// Logout button still in developement
 /*ElevatedButton LogoutButton() {
   return ElevatedButton(
       onPressed: () {
@@ -324,4 +328,41 @@ class TvShowsContainer extends StatelessWidget {
       ),
     );
   }
+}
+
+// Navigation bar
+Container customNavigationBar() {
+  return Container(
+    color: Colors.black,
+    child: const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+      child: GNav(
+        backgroundColor: Colors.black,
+        color: Colors.white,
+        activeColor: Colors.white,
+        tabBackgroundColor: Color.fromARGB(255, 36, 36, 36),
+        gap: 7,
+        haptic: true,
+        padding: EdgeInsets.all(16),
+        tabs: [
+          GButton(
+            icon: Icons.home_max_outlined,
+            text: " Home",
+          ),
+          GButton(
+            icon: Icons.favorite_border_outlined,
+            text: " Favourites",
+          ),
+          GButton(
+            icon: Icons.settings,
+            text: " Settings",
+          ),
+          GButton(
+            icon: Icons.supervised_user_circle_outlined,
+            text: " Profile",
+          )
+        ],
+      ),
+    ),
+  );
 }

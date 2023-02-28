@@ -8,6 +8,7 @@ import 'package:nextmovie_v2/Pages/signup_page.dart';
 import 'package:nextmovie_v2/utilities/color_utils.dart';
 import 'package:nextmovie_v2/reusable_widgets/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:nextmovie_v2/utilities/navigator.dart';
 
 // Sign In Screen Widget
 class signinScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _signinScreenState extends State<signinScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => homescreenPage(),
+                        builder: (context) => MainNavigator(),
                       ));
                 });
               } on FirebaseAuthException catch (error) {
