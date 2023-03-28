@@ -61,6 +61,8 @@ class _homescreenPageState extends State<homescreenPage> {
           /*---------------------------*/
           MostPopularMoviesContainer(MostPopular: topRatedMovies),
           /*---------------------------*/
+          UpcomingContainer(UpcomingMovies: upcomingShows),
+          /*---------------------------*/
           TrendingMoviesContainer(trending: trendingMovies),
           /*---------------------------*/
           TvShowsContainer(TvShows: tvShows),

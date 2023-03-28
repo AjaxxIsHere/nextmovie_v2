@@ -330,6 +330,86 @@ class TvShowsContainer extends StatelessWidget {
   }
 }
 
+//List view to show upcoming movies and shows with its posters
+class UpcomingContainer extends StatelessWidget {
+  final List UpcomingMovies;
+
+  const UpcomingContainer({super.key, required this.UpcomingMovies});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const textModified(
+              text: "Upcoming Movies & Shows 📺",
+              color: Colors.white,
+              size: 26),
+          const SizedBox(
+            height: 15,
+          ),
+          Container(
+            height: 270,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: UpcomingMovies.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  /*------------------------------------------------------------------------------------*/
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => descriptionPage(
+                            name: UpcomingMovies[index]['original_title'],
+                            bannerUrl: 'https://image.tmdb.org/t/p/w500' +
+                                UpcomingMovies[index]['backdrop_path'],
+                            posterUrl: 'https://image.tmdb.org/t/p/w500' +
+                                UpcomingMovies[index]['poster_path'],
+                            description: UpcomingMovies[index]['overview'],
+                            votes: UpcomingMovies[index]['vote_average']
+                                .toString(),
+                            release_date: UpcomingMovies[index]['release_date'],
+                          ),
+                        ));
+                  },
+                  /*------------------------------------------------------------------------------------*/
+                  child: Container(
+                    width: 140,
+                    child: Column(children: [
+                      Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://image.tmdb.org/t/p/w500' +
+                                        UpcomingMovies[index]['poster_path']))),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Container(
+                        child: textModified(
+                          text: UpcomingMovies[index]['original_title'] ??
+                              'Loading',
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      )
+                    ]),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 // Navigation bar
 Container customNavigationBar() {
   return Container(

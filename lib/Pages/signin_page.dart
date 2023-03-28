@@ -9,6 +9,7 @@ import 'package:nextmovie_v2/utilities/color_utils.dart';
 import 'package:nextmovie_v2/reusable_widgets/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nextmovie_v2/utilities/navigator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Sign In Screen Widget
 class signinScreen extends StatefulWidget {
@@ -60,6 +61,7 @@ class _signinScreenState extends State<signinScreen> {
                         email: _emailTextController.text,
                         password: _passwordTextController.text)
                     .then((value) {
+                     FirebaseFirestore.instance.collection('UserData').doc(value.user!.uid).set({"email": value.user!.email});
                   Navigator.push(
                       context,
                       MaterialPageRoute(

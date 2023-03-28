@@ -22,47 +22,56 @@ class _MainNavigatorState extends State<MainNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: _screens[_selectedIndex],
-        bottomNavigationBar: Container(
-          color: Colors.black,
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
-            child: GNav(
-              backgroundColor: Colors.black,
-              color: Colors.white,
-              activeColor: Colors.white,
-              tabBackgroundColor: const Color.fromARGB(255, 36, 36, 36),
-              gap: 7,
-              haptic: true,
-              padding: const EdgeInsets.all(16),
-              tabs: const [
-                GButton(
-                  icon: Icons.home_outlined,
-                  text: " Home",
-                ),
-                GButton(
-                  icon: Icons.favorite_border_outlined,
-                  text: " Favourites",
-                ),
-                GButton(
-                  icon: Icons.settings_outlined,
-                  text: " Settings",
-                ),
-                GButton(
-                  icon: Icons.account_circle_outlined,
-                  text: " Profile",
-                )
-              ],
-              selectedIndex: _selectedIndex,
-              onTabChange: (index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MainNavigator()),
+        );
+        return true;
+      },
+      child: Scaffold(
+          body: _screens[_selectedIndex],
+          bottomNavigationBar: Container(
+            color: Colors.black,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+              child: GNav(
+                backgroundColor: Colors.black,
+                color: Colors.white,
+                activeColor: Colors.white,
+                tabBackgroundColor: const Color.fromARGB(255, 36, 36, 36),
+                gap: 7,
+                haptic: true,
+                padding: const EdgeInsets.all(16),
+                tabs: const [
+                  GButton(
+                    icon: Icons.home_outlined,
+                    text: " Home",
+                  ),
+                  GButton(
+                    icon: Icons.favorite_border_outlined,
+                    text: " Favourites",
+                  ),
+                  GButton(
+                    icon: Icons.settings_outlined,
+                    text: " Settings",
+                  ),
+                  GButton(
+                    icon: Icons.account_circle_outlined,
+                    text: " Profile",
+                  )
+                ],
+                selectedIndex: _selectedIndex,
+                onTabChange: (index) {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                },
+              ),
             ),
-          ),
-        ));
+          )),
+    );
   }
 }
