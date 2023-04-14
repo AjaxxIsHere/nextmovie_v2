@@ -54,9 +54,6 @@ class _homescreenPageState extends State<homescreenPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        /*appBar: AppBar(
-              title: const textModified(
-                  text: "NextMovie", color: Colors.white, size: 24)),*/
         body: ListView(children: [
           /*---------------------------*/
           MostPopularMoviesContainer(MostPopular: topRatedMovies),

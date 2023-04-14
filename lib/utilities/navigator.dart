@@ -15,9 +15,9 @@ class _MainNavigatorState extends State<MainNavigator> {
   int _selectedIndex = 0;
   static const List<Widget> _screens = <Widget>[
     homescreenPage(),
-    Text("placeholder 2"),
-    Text("placeholder 3"),
+    //Text("placeholder 2"),
     ProfilePage(),
+    Text("placeholder 3"),
   ];
 
   @override
@@ -50,18 +50,18 @@ class _MainNavigatorState extends State<MainNavigator> {
                     icon: Icons.home_outlined,
                     text: " Home",
                   ),
-                  GButton(
+                  /*GButton(
                     icon: Icons.favorite_border_outlined,
                     text: " Favourites",
+                  ),*/
+                  GButton(
+                    icon: Icons.account_circle_outlined,
+                    text: " Profile",
                   ),
                   GButton(
                     icon: Icons.settings_outlined,
                     text: " Settings",
                   ),
-                  GButton(
-                    icon: Icons.account_circle_outlined,
-                    text: " Profile",
-                  )
                 ],
                 selectedIndex: _selectedIndex,
                 onTabChange: (index) {
