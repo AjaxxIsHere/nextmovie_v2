@@ -3,6 +3,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nextmovie_v2/Pages/signin_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -28,7 +30,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
     await ref.putFile(File(image!.path));
     ref.getDownloadURL().then((value) {
-      print(value);
       setState(() {
         imageUrl = value;
         prefs.setString('imageUrl', imageUrl);
@@ -52,8 +53,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          const Color.fromARGB(255, 48, 48, 48), // darkish grey background
+      backgroundColor: const Color.fromARGB(255, 48, 48, 48),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -84,6 +84,8 @@ class _ProfilePageState extends State<ProfilePage> {
             Padding(
               padding: const EdgeInsets.only(left: 130, right: 130),
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 92, 192, 187)),
                 onPressed: () {
                   pickuploadImage();
                 },
@@ -91,13 +93,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const <Widget>[
                     Icon(Icons.edit),
-                    SizedBox(width: 5),
+                    SizedBox(width: 10),
                     Text('Edit Profile'),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 170),
+            const SizedBox(height: 130),
             Container(
               alignment: Alignment.bottomCenter,
               child: TextButton.icon(
@@ -132,7 +134,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: TextStyle(color: Colors.grey),
                 ),
               ),
-            )
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 136, 136, 136)),
+                onPressed: () {
+                  FirebaseAuth.instance.signOut().then((value) {
+                    Navigator.pushReplacement(
+                        context as BuildContext,
+                        MaterialPageRoute(
+                            builder: (context) => const signinScreen()));
+                  });
+                },
+                child: const Text("Logout")),
           ],
         ),
       ),

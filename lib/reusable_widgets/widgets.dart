@@ -1,13 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nextmovie_v2/utilities/text_styles.dart';
 import '../Pages/description_page.dart';
-import '../Pages/signin_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:nextmovie_v2/Pages/profile_page.dart';
-import 'package:nextmovie_v2/utilities/navigator.dart';
 
 // Logo for sign in page
 Image logoWidget(String imageName) {
@@ -74,19 +70,6 @@ Container signInsignUpButtons(
     ),
   );
 }
-
-// Logout button still in developement
-/*ElevatedButton LogoutButton() {
-  return ElevatedButton(
-      onPressed: () {
-        FirebaseAuth.instance.signOut().then((value) {
-          print("Signed Out");
-          Navigator.pushReplacement(context as BuildContext,
-              MaterialPageRoute(builder: (context) => const signinScreen()));
-        });
-      },
-      child: const Text("Logout"));
-}*/
 
 // List view to show trending movies with its posters
 class TrendingMoviesContainer extends StatelessWidget {
@@ -344,7 +327,7 @@ class UpcomingContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const textModified(
-              text: "Upcoming Movies & Shows 📺",
+              text: "Upcoming Movies & Shows 📀",
               color: Colors.white,
               size: 26),
           const SizedBox(

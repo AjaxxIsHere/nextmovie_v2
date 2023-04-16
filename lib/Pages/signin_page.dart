@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:nextmovie_v2/Pages/home_page.dart';
 import 'package:nextmovie_v2/Pages/signup_page.dart';
 import 'package:nextmovie_v2/utilities/color_utils.dart';
 import 'package:nextmovie_v2/reusable_widgets/widgets.dart';
@@ -61,7 +59,10 @@ class _signinScreenState extends State<signinScreen> {
                         email: _emailTextController.text,
                         password: _passwordTextController.text)
                     .then((value) {
-                     FirebaseFirestore.instance.collection('UserData').doc(value.user!.uid).set({"email": value.user!.email});
+                  FirebaseFirestore.instance
+                      .collection('UserData')
+                      .doc(value.user!.uid)
+                      .set({"email": value.user!.email});
                   Navigator.push(
                       context,
                       MaterialPageRoute(

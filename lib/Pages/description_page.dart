@@ -1,11 +1,10 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:nextmovie_v2/Pages/home_page.dart';
 import 'package:nextmovie_v2/utilities/text_styles.dart';
-
 import '../utilities/navigator.dart';
 
+// description page and widget
 class descriptionPage extends StatelessWidget {
   final String name, description, bannerUrl, posterUrl, votes, release_date;
 
@@ -77,11 +76,6 @@ class descriptionPage extends StatelessWidget {
             ),
             Row(
               children: [
-                /*Container(
-                  height: 200,
-                  width: 100,
-                  child: Image.network(posterUrl),
-                ),*/
                 Flexible(
                   child: Container(
                     child: textModified(

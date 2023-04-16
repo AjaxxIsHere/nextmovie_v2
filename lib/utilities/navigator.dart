@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextmovie_v2/Pages/home_page.dart';
 import 'package:nextmovie_v2/Pages/profile_page.dart';
-import 'package:nextmovie_v2/reusable_widgets/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MainNavigator extends StatefulWidget {

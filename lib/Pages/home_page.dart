@@ -5,6 +5,7 @@ import 'package:nextmovie_v2/utilities/text_styles.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:nextmovie_v2/reusable_widgets/widgets.dart';
 
+// Home page
 class homescreenPage extends StatefulWidget {
   const homescreenPage({super.key});
 
@@ -14,11 +15,13 @@ class homescreenPage extends StatefulWidget {
 
 class _homescreenPageState extends State<homescreenPage> {
   /*-----------------------------------------------------------------------------*/
+  // List of movies that contain maps of individual movies
   List trendingMovies = [];
   List topRatedMovies = [];
   List tvShows = [];
   List upcomingShows = [];
   final String tmdbAPIkey = 'ed16e80fbc7853efc31460a41a8575bd';
+  //TMDB api token to get callbacks
   final readaccesstoken =
       'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDE2ZTgwZmJjNzg1M2VmYzMxNDYwYTQxYTg1NzViZCIsInN1YiI6IjYzZGU1NWJiY2QyMDQ2MDA4MWUxYjhmZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ej5mgpEQekD3RIlt9wOyMYoZclEjfKzLM4z_M4mv8QI';
 
@@ -28,6 +31,7 @@ class _homescreenPageState extends State<homescreenPage> {
     super.initState();
   }
 
+  // async function to send maps to the movie widgets
   loadmovies() async {
     TMDB tmdbWithCustomLogs = TMDB(ApiKeys(tmdbAPIkey, readaccesstoken),
         logConfig: const ConfigLogger(
@@ -46,7 +50,6 @@ class _homescreenPageState extends State<homescreenPage> {
       tvShows = tvResults['results'];
       upcomingShows = UpcomingResults['results'];
     });
-    print(UpcomingResults);
   }
   /*-----------------------------------------------------------------------------*/
 

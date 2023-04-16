@@ -3,10 +3,12 @@ import 'package:nextmovie_v2/Pages/signin_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 
+// Main app
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  //runApp(const MyApp());
+
+  // sets up to only view in portrait
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
@@ -14,6 +16,7 @@ void main() async {
   });
 }
 
+// Moves to the signin screen
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -28,5 +31,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-//15:13
