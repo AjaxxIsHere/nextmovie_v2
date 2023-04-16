@@ -49,9 +49,11 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800], // darkish grey background
+      backgroundColor:
+          const Color.fromARGB(255, 48, 48, 48), // darkish grey background
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -79,80 +81,61 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                pickuploadImage();
-              },
-              child: const Icon(Icons.edit),
+            Padding(
+              padding: const EdgeInsets.only(left: 130, right: 130),
+              child: ElevatedButton(
+                onPressed: () {
+                  pickuploadImage();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const <Widget>[
+                    Icon(Icons.edit),
+                    SizedBox(width: 5),
+                    Text('Edit Profile'),
+                  ],
+                ),
+              ),
             ),
+            const SizedBox(height: 170),
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: TextButton.icon(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          child: AlertDialog(
+                            title: const Text("About this app"),
+                            content: const Text(
+                                "NextMovie is a passion project created by Ajaz Imran. This app allows users to easily sign up and browse through the latest movies and TV shows. With endless lists of titles to choose from, users can easily customize their profile to keep track of their favorite picks. For any feedback, definetly DONT reach out to me at: \n\nma-mohamed-imran@uclan.ac.uk. \n\nThank you for using NextMovie and happy browsing!"),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text("OK"))
+                            ],
+                            backgroundColor:
+                                const Color.fromARGB(255, 179, 178, 178),
+                          ),
+                        );
+                      });
+                },
+                icon: const Icon(
+                  Icons.info,
+                  color: Colors.grey,
+                ),
+                label: const Text(
+                  'App Info',
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
-    /*return Scaffold(
-      backgroundColor: Colors.grey[800],
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/profile_background.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Center(
-                child: imageUrl == " "
-                    ? const Icon(
-                        Icons.person,
-                        size: 60,
-                        color: Colors.white,
-                      )
-                    : CircleAvatar(
-                        radius: 60,
-                        backgroundColor: Colors.black,
-                        backgroundImage: NetworkImage(imageUrl),
-                      ),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Icon(
-                      Icons.info_outline_rounded,
-                      color: Colors.white,
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      'About',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );*/
   }
 }

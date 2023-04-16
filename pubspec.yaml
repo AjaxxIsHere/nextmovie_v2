@@ -58,6 +58,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+flutter_icons:
+  android: true
+  image_path: "assets/images/playstore.png"
+
 flutter_native_splash:
   color: "#1d1d1d"
   image: assets/images/NextMovieLogo.png

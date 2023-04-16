@@ -15,9 +15,7 @@ class _MainNavigatorState extends State<MainNavigator> {
   int _selectedIndex = 0;
   static const List<Widget> _screens = <Widget>[
     homescreenPage(),
-    //Text("placeholder 2"),
     ProfilePage(),
-    Text("placeholder 3"),
   ];
 
   @override
@@ -44,23 +42,15 @@ class _MainNavigatorState extends State<MainNavigator> {
                 tabBackgroundColor: const Color.fromARGB(255, 36, 36, 36),
                 gap: 7,
                 haptic: true,
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.fromLTRB(65, 16, 65, 16),
                 tabs: const [
                   GButton(
                     icon: Icons.home_outlined,
                     text: " Home",
                   ),
-                  /*GButton(
-                    icon: Icons.favorite_border_outlined,
-                    text: " Favourites",
-                  ),*/
                   GButton(
                     icon: Icons.account_circle_outlined,
                     text: " Profile",
-                  ),
-                  GButton(
-                    icon: Icons.settings_outlined,
-                    text: " Settings",
                   ),
                 ],
                 selectedIndex: _selectedIndex,
